@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "eamodio.gitlens",
+    "redhat.vscode-xml",
+    "aaron-bond.better-comments",
+    "equinusocio.vsc-material-theme",
+    "equinusocio.vsc-material-theme-icons",
+    "supermaven.supermaven",
+    "bmewburn.vscode-intelephense-client"
+  ]
+}

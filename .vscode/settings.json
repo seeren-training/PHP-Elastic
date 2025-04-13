@@ -1,0 +1,48 @@
+{
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.iconTheme": "vscode-icons",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "editor.rulers": [
+    {
+      "column": 80,
+      "color": "#b175ee"
+    }
+  ],
+  "editor.fontFamily": "MesloLGS NF",
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.size": "fill",
+  "editor.minimap.maxColumn": 50,
+  "scss.lint.unknownAtRules": "ignore",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#edc066",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#77a5e2",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+
+    {
+      "tag": "todo",
+      "color": "#000000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "#FFFFFF",
+      "bold": true,
+      "italic": false
+    }
+  ],
+  "workbench.colorTheme": "Best Themes - Material Ocean Italic",
+}
