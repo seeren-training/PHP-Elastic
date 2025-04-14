@@ -15,19 +15,17 @@ foreach ($aggs['buckets'] as $bucket) {
         ]
     ];
     if ($search || $filters) {
-        $bucketFilter = ['terms' => []];
+        $must = [];
         foreach ($filters as $filterName => $filterValues) {
             if ($filterName !== $bucket) {
-                $bucketFilter['terms'] = ["filters.$filterName.keyword" => $filterValues];
+                $must[] = ["terms" => ["filters.$filterName.keyword" => $filterValues]];
             }
         }
-        if (count($bucketFilter['terms'])) {
+        if (count($must)) {
             $filtredBuckets["filtred_$bucket"] = [
                 'filter' => [
                     'bool' => [
-                        'must' => [
-                            [...$bucketFilter]
-                        ]
+                        'must' => $must
                     ],
 
                 ],

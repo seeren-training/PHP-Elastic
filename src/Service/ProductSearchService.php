@@ -28,7 +28,6 @@ class ProductSearchService
             ? require __DIR__ . '/../../queries/search-query.php'
             : require __DIR__ . '/../../queries/search-query-aggs.php');
 
-
         $response = $this->searchService->searchDocuments(
             'products',
             [
