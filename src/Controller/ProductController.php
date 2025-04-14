@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Service\ProductSearchService;
 use App\Service\ProductService;
 use Seeren\Controller\JsonController;
 use Seeren\Router\Route\Route;
@@ -32,14 +31,5 @@ class ProductController extends JsonController
         ), 201);
     }
 
-    #[Route("/products/autocomplete", "GET")]
-    public function autocomplete(ProductSearchService $productSearchService)
-    {
-        $query = $this->getRequest()->getQueryParams();
-
-        return $this->render(
-            $productSearchService->getAutocomplete((string) ($query['search'] ?? null)),
-            201
-        );
-    }
+    // TODO Implement autocomplete
 }

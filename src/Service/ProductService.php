@@ -11,10 +11,7 @@ use App\Manager\ORM;
 class ProductService
 {
 
-    public function __construct(
-        private ORM $orm,
-        private ProductSearchService $productSearchService
-    ) {}
+    public function __construct(private ORM $orm) {}
 
     public function getProducts(
         int $page,
@@ -24,26 +21,9 @@ class ProductService
     ): array {
         $offset = ($page - 1) * $limit;
 
-        [$count, $ids, $filters] = $this->productSearchService->searchProductIds(
-            $offset,
-            $limit,
-            $search,
-            $filters
-        );
+        // TODO Get products
 
-        $products =  $this->orm
-            ->getEntityManager()
-            ->getRepository(Product::class)
-            ->findBy(['id' => $ids]);
-
-        $idMap = array_flip($ids);
-
-        usort(
-            $products,
-            fn($a, $b) => $idMap[$a->getId()] <=> $idMap[$b->getId()]
-        );
-
-        return [$count, $limit, $offset, $products, $filters];
+        return [];
     }
 
     public function getProduct(int $id): Product
@@ -86,6 +66,8 @@ class ProductService
         $entityManager->persist($product);
         $entityManager->flush();
 
-        return $this->productSearchService->indexProduct($product);
+        // TODO Index product
+
+        return $product;
     }
 }

@@ -1,5 +1,5 @@
 {
-    "name": "cyril/sandbox",
+    "name": "elastic/sandbox",
     "description": "Elastic sandbox",
     "type": "project",
     "license": "MIT",
@@ -13,7 +13,6 @@
         "seeren/router": "*",
         "doctrine/orm": "^3.3",
         "symfony/cache": "^7.2",
-        "fakerphp/faker": "^1.24",
         "elasticsearch/elasticsearch": "8.6",
         "guzzlehttp/psr7": "^1.9",
         "http-interop/http-factory-guzzle": "^1.2",

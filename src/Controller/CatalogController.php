@@ -10,23 +10,24 @@ class CatalogController extends HTMLController
 {
 
     #[Route("/catalog", "GET")]
-    public function index(ProductService $catalogService)
+    public function index(ProductService $productService)
     {
         $params = $this->getRequest()->getQueryParams();
 
-        [$count, $limit, $offset, $products, $filters] = $catalogService->getProducts(
+        // TODO Get paginated products
+        $productService->getProducts(
             page: max((int) ($params['page'] ?? 1), 1),
             search: $params['search'] ?? null,
             filters: $params['filters'] ?? null
         );
 
         return $this->render('index.html.php', [
-            'count' => $count,
-            'limit' => $limit,
-            'offset' => $offset,
-            'products' => $products,
-            'filters' => $filters,
-            'params' => $params,
+            'count' => 0,
+            'limit' => 0,
+            'offset' => 0,
+            'products' => [],
+            'filters' => [],
+            'params' => [],
         ]);
     }
 }
