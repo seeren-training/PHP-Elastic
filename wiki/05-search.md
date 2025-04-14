@@ -260,7 +260,7 @@ Mais attention au cas ou vous souhaiterz maintenir le résultat de recherche alo
 ### 🏷️ **Point of time**
 
 - Créer un pit pour une minute:
-- 
+  
 ```bash
 POST products/_pit?keep_alive=1m
 ```

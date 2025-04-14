@@ -185,6 +185,42 @@ C'est contournable avec que l'on a observé précédemment. On peut demander un 
 }
 ```
 
+COmme on vient de l'observer une aggregation peut être filtrée ;)
+
+
+```json
+"filtred_category": {
+    "filter": {
+        "bool": {
+            "must": [
+                {
+                    "terms": {
+                        "filters.brand.keyword": [
+                            "E.L.F."
+                        ]
+                    }
+                },
+                {
+                    "terms": {
+                        "filters.colors.keyword": [
+                            "#000000"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "aggs": {
+        "category": {
+            "terms": {
+                "field": "filters.category.keyword",
+                "size": 100
+            }
+        }
+    }
+},
+
+```
 ### 🏷️ **Post filter**
 
 https://www.elastic.co/guide/en/elasticsearch/reference/current/filter-search-results.html
