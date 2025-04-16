@@ -1,6 +1,6 @@
 {
   "diffEditor.ignoreTrimWhitespace": false,
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "vs-seti",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "editor.rulers": [
     {
@@ -44,5 +44,5 @@
       "italic": false
     }
   ],
-  "workbench.colorTheme": "Best Themes - Material Ocean Italic",
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
 }
