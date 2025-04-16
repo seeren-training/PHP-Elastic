@@ -11,7 +11,11 @@ use App\Manager\ORM;
 class ProductService
 {
 
-    public function __construct(private ORM $orm) {}
+    public function __construct(
+        private ORM $orm,
+        private ProductSearchService $productSearchService
+    ) {
+    }
 
     public function getProducts(
         int $page,
@@ -66,7 +70,7 @@ class ProductService
         $entityManager->persist($product);
         $entityManager->flush();
 
-        // TODO Index product
+        $this->productSearchService->indexProduct($product);
 
         return $product;
     }

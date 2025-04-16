@@ -11,7 +11,6 @@ class IndiceService
 
     public function __construct(private Search $search){}
 
-
     public function createIndice(array $params): ResponseInterface
     {
         try {
