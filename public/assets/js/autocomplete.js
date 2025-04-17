@@ -8,7 +8,7 @@
     timeoutId = window.setTimeout(() => autocomplete(e.target.value), 250);
   })(null));
 
-  htmlInput.addEventListener('blur', () => htmlAutocomplete.classList.add('hidden'));
+  // TODO improve blur and focus please
 
   const autocomplete = (search) => {
     fetch(`/autocomplete?search=${search}`)
@@ -21,7 +21,7 @@
         } else if (data.corrections.length) {
           const [correction] = data.corrections;
           autocomplete(correction)
-        }else {
+        } else {
           htmlAutocomplete.classList.add('hidden');
         }
       });
