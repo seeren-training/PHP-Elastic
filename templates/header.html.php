@@ -19,9 +19,6 @@
       aria-orientation="vertical"
       aria-labelledby="menu-button"
       tabindex="-1">
-      <div class="py-1" role="none">
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" tabindex="-1">Account settings</a>
-      </div>
     </div>
   </form>
 </div>
