@@ -13,6 +13,16 @@ class DocumentService
     {
     }
 
+    public function searchDocument(
+        string $indice,
+        array $body
+    ): ResponseInterface {
+        return $this->search->getClient()->search([
+            'index' => $indice,
+            'body' => $body
+        ]);
+    }
+
     public function createDocument(
         string $indice,
         int $id,

@@ -14,20 +14,19 @@ class CatalogController extends HTMLController
     {
         $params = $this->getRequest()->getQueryParams();
 
-        // TODO Get paginated products
-        $productService->getProducts(
+        [$count, $limit, $offset, $products] = $productService->getProducts(
             page: max((int) ($params['page'] ?? 1), 1),
             search: $params['search'] ?? null,
             filters: $params['filters'] ?? null
         );
 
         return $this->render('index.html.php', [
-            'count' => 0,
-            'limit' => 0,
-            'offset' => 0,
-            'products' => [],
+            'count' => $count,
+            'limit' => $limit,
+            'offset' => $offset,
+            'products' => $products,
             'filters' => [],
-            'params' => [],
+            'params' => $params,
         ]);
     }
 }

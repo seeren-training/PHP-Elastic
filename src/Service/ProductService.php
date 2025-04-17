@@ -13,7 +13,7 @@ class ProductService
 
     public function __construct(
         private ORM $orm,
-        private ProductSearchService $productSearchService
+        private ProductSearchService $productSearchService,
     ) {
     }
 
@@ -25,9 +25,24 @@ class ProductService
     ): array {
         $offset = ($page - 1) * $limit;
 
-        // TODO Get products
+        [$count, $ids] = $this->productSearchService->searchIds(
+            $offset,
+            $limit,
+            $search
+        );
+        $products = $this->orm
+            ->getEntityManager()
+            ->getRepository(Product::class)
+            ->findBy(['id' => $ids]);
 
-        return [];
+        $positionMap = array_flip($ids);
+
+        usort(
+            $products,
+            fn($a, $b) => $positionMap[$a->getId()] <=> $positionMap[$b->getId()]
+        );
+
+        return [$count, $limit, $offset, $products];
     }
 
     public function getProduct(int $id): Product

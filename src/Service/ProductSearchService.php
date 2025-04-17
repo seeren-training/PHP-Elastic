@@ -8,8 +8,29 @@ use RuntimeException;
 class ProductSearchService
 {
 
-    public function __construct(private DocumentService $documentService)
-    {
+    public function __construct(
+        private DocumentService $documentService,
+        private DocumentMapperService $documentMapperService,
+    ) {
+    }
+
+    public function searchIds(
+        int $offset,
+        int $limit,
+        ?string $search
+    ): array {
+        $query = [
+            '_source' => false,
+            'from' => $offset,
+            'size' => $limit,
+        ] + ($search ? require __DIR__ . '/../../search/multi-match.php' : []);
+
+        $response = $this->documentService->searchDocument(
+            'products',
+            $query
+        );
+
+        return $this->documentMapperService->mapIds($response);
     }
 
     public function indexProduct(Product $product): Product
