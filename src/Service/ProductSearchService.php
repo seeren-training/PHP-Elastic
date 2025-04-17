@@ -40,6 +40,8 @@ class ProductSearchService
             $product->getId(),
             [
                 'name' => $product->getName(),
+                'name_search_as_you_type' => $product->getName(),
+                'name_completion' => ['input' => [$product->getName()]],
                 'description' => $product->getDescription(),
                 'price' => $product->getPrice(),
                 'category' => $product->getCategory()->getName(),

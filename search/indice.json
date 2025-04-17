@@ -9,6 +9,12 @@
       "name": {
         "type": "text"
       },
+      "name_search_as_you_type": {
+        "type": "search_as_you_type"
+      },
+      "name_completion": {
+        "type": "completion"
+      },
       "description": {
         "type": "text"
       },

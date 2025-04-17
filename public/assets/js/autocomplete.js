@@ -10,6 +10,8 @@
 
   const autocomplete = (search) => {
     // TODO Fetch autocomplete then render
+
+    console.log('autocomplete', search);
   }
 
 })()

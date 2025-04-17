@@ -30,6 +30,4 @@ class ProductController extends JsonController
             $payload['colors'],
         ), 201);
     }
-
-    // TODO Implement autocomplete
 }
