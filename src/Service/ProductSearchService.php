@@ -23,14 +23,20 @@ class ProductSearchService
             '_source' => false,
             'from' => $offset,
             'size' => $limit,
-        ] + ($search ? require __DIR__ . '/../../search/multi-match.php' : []);
+        ] + ($search
+            ? require __DIR__ . '/../../search/multi-match.php'
+            : require __DIR__ . '/../../search/aggs.php');
 
         $response = $this->documentService->searchDocument(
             'products',
             $query
         );
 
-        return $this->documentMapperService->mapIds($response);
+
+        [$count, $ids] = $this->documentMapperService->mapIds($response);
+        $filters = $this->documentMapperService->mapFilters($response);
+
+        return [$count, $ids, $filters];
     }
 
     public function indexProduct(Product $product): Product

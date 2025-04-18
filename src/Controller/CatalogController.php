@@ -14,7 +14,7 @@ class CatalogController extends HTMLController
     {
         $params = $this->getRequest()->getQueryParams();
 
-        [$count, $limit, $offset, $products] = $productService->getProducts(
+        [$count, $limit, $offset, $products, $filters] = $productService->getProducts(
             page: max((int) ($params['page'] ?? 1), 1),
             search: $params['search'] ?? null,
             filters: $params['filters'] ?? null
@@ -25,7 +25,7 @@ class CatalogController extends HTMLController
             'limit' => $limit,
             'offset' => $offset,
             'products' => $products,
-            'filters' => [],
+            'filters' => $filters,
             'params' => $params,
         ]);
     }

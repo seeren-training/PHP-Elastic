@@ -25,7 +25,7 @@ class ProductService
     ): array {
         $offset = ($page - 1) * $limit;
 
-        [$count, $ids] = $this->productSearchService->searchIds(
+        [$count, $ids, $filters] = $this->productSearchService->searchIds(
             $offset,
             $limit,
             $search
@@ -42,7 +42,7 @@ class ProductService
             fn($a, $b) => $positionMap[$a->getId()] <=> $positionMap[$b->getId()]
         );
 
-        return [$count, $limit, $offset, $products];
+        return [$count, $limit, $offset, $products, $filters];
     }
 
     public function getProduct(int $id): Product

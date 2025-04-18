@@ -44,4 +44,30 @@ class DocumentMapperService
         ];
     }
 
+    public function mapFilters(ResponseInterface $response): array
+    {
+        $filters = [];
+        $aggregations = $response['aggregations'];
+
+        foreach ($aggregations as $filterName => $filterValues) {
+            if ($filterName !== 'filters') {
+                $filters[$filterName] = [];
+                foreach ($filterValues['buckets'] as $filterValue) {
+                    $filters[$filterName][$filterValue['key']] = $filterValue['doc_count'];
+                }
+            }
+        }
+
+        foreach ($aggregations['filters'] as $filterName => $filterValues) {
+            if ($filterName !== 'doc_count') {
+                foreach ($filterValues['buckets'] as $filterValue) {
+                    $filters[$filterName][$filterValue['key']] ??= 0;
+                }
+            }
+        }
+
+        return $filters;
+    }
+
+
 }

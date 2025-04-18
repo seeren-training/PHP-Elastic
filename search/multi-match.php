@@ -8,4 +8,4 @@ return [
       'fuzziness' => 'AUTO'
     ]
   ]
-];
+] + require __DIR__ . '/aggs.php';
